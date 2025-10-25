@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin, FiGithub, FiLinkedin, FiSend } from 'react-icons/fi';
+import { FiMail, FiPhone, FiMapPin, FiGithub, FiLinkedin, FiSend, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const Contact = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
 
   const handleChange = (e) => {
     setFormData({
@@ -22,13 +24,48 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
     
-    // Simular envío del formulario
-    setTimeout(() => {
-      alert('¡Mensaje enviado correctamente! Te responderé pronto.');
+    try {
+      // Configuración de EmailJS desde variables de entorno
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      // Validar que las variables de entorno estén configuradas
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('Las credenciales de EmailJS no están configuradas. Revisa tu archivo .env');
+      }
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject || 'Sin asunto',
+        message: formData.message,
+        to_name: 'Alejandro Muñoz',
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
+      
+      // Ocultar mensaje de éxito después de 5 segundos
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+      
+    } catch (error) {
+      console.error('Error al enviar el mensaje:', error);
+      setSubmitStatus('error');
+      
+      // Ocultar mensaje de error después de 5 segundos
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const contactInfo = [
@@ -266,6 +303,33 @@ const Contact = () => {
                       </div>
                     )}
                   </button>
+
+                  {/* Mensajes de estado */}
+                  {submitStatus === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg flex items-center text-green-400"
+                    >
+                      <FiCheckCircle className="mr-3 flex-shrink-0" size={20} />
+                      <p className="text-sm font-medium">
+                        ¡Mensaje enviado correctamente! Te responderé pronto.
+                      </p>
+                    </motion.div>
+                  )}
+
+                  {submitStatus === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg flex items-center text-red-400"
+                    >
+                      <FiAlertCircle className="mr-3 flex-shrink-0" size={20} />
+                      <p className="text-sm font-medium">
+                        Hubo un error al enviar el mensaje. Por favor, intenta nuevamente o contáctame directamente por email.
+                      </p>
+                    </motion.div>
+                  )}
                 </form>
 
                 <div className="mt-6 p-4 bg-neutral-900 border border-neutral-700 rounded-lg">
