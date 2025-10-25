@@ -42,7 +42,7 @@ const Navbar = () => {
             to="hero"
             smooth={true}
             duration={500}
-            className="text-xl font-bold text-white cursor-pointer hover:text-primary-500 transition-colors"
+            className="text-base sm:text-xl font-bold text-white cursor-pointer hover:text-primary-500 transition-colors truncate max-w-[60%] sm:max-w-none"
           >
             Desarrollador Full Stack
           </Link>
@@ -81,17 +81,17 @@ const Navbar = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="md:hidden bg-neutral-800 rounded-lg shadow-lg mt-2 p-4 border border-neutral-700"
+            className="md:hidden bg-neutral-800 rounded-lg shadow-lg mt-2 p-4 border border-neutral-700 mx-2"
           >
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-3">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.to}
                   smooth={true}
-                  duration={500}
+                  duration={300}
                   offset={-64}
-                  className="text-neutral-300 hover:text-primary-500 cursor-pointer transition-colors font-medium"
+                  className="text-neutral-300 hover:text-primary-500 cursor-pointer transition-colors font-medium py-2 px-3 rounded-lg hover:bg-neutral-700"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

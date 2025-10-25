@@ -135,54 +135,54 @@ const Contact = () => {
           viewport={{ once: true }}
           variants={containerVariants}
         >
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16 px-4">
             <motion.h2 
               variants={itemVariants}
-              className="text-3xl md:text-4xl font-bold text-white mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4"
             >
               Conectemos
             </motion.h2>
             <motion.p 
               variants={itemVariants}
-              className="text-lg text-neutral-400 max-w-2xl mx-auto"
+              className="text-base md:text-lg text-neutral-400 max-w-2xl mx-auto"
             >
               ¿Tienes un proyecto en mente? Me encantaría conocer más sobre tus ideas y cómo puedo ayudarte a hacerlas realidad.
             </motion.p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-12 max-w-6xl mx-auto">
             {/* Contact Information */}
             <motion.div variants={itemVariants}>
-              <div className="bg-neutral-800 border border-neutral-700 rounded-xl p-8 shadow-sm h-full">
-                <h3 className="text-2xl font-semibold text-white mb-6">
+              <div className="bg-neutral-800 border border-neutral-700 rounded-xl p-4 sm:p-6 md:p-8 shadow-sm h-full">
+                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">
                   Información de Contacto
                 </h3>
                 
-                <div className="space-y-6 mb-8">
+                <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
                   {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-center">
-                      <div className="p-3 bg-primary-500/20 border border-primary-500/30 text-primary-500 rounded-lg mr-4">
+                    <div key={index} className="flex items-start sm:items-center">
+                      <div className="p-2 sm:p-3 bg-primary-500/20 border border-primary-500/30 text-primary-500 rounded-lg mr-3 sm:mr-4 flex-shrink-0">
                         {info.icon}
                       </div>
-                      <div>
-                        <p className="text-sm text-neutral-400 font-medium">{info.label}</p>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs sm:text-sm text-neutral-400 font-medium">{info.label}</p>
                         {info.href ? (
                           <a 
                             href={info.href}
-                            className="text-white hover:text-primary-500 transition-colors font-medium"
+                            className="text-sm sm:text-base text-white hover:text-primary-500 transition-colors font-medium break-words"
                           >
                             {info.value}
                           </a>
                         ) : (
-                          <p className="text-white font-medium">{info.value}</p>
+                          <p className="text-sm sm:text-base text-white font-medium">{info.value}</p>
                         )}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="border-t border-neutral-700 pt-8">
-                  <h4 className="text-lg font-semibold text-white mb-4">
+                <div className="border-t border-neutral-700 pt-6 sm:pt-8">
+                  <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">
                     Sígueme en redes
                   </h4>
                   <div className="flex space-x-4">
@@ -201,11 +201,11 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="mt-8 p-6 bg-primary-500/10 border border-primary-500/20 rounded-lg">
-                  <h4 className="font-semibold text-primary-400 mb-2">
+                <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-primary-500/10 border border-primary-500/20 rounded-lg">
+                  <h4 className="text-sm sm:text-base font-semibold text-primary-400 mb-2">
                     ¿Prefieres una llamada?
                   </h4>
-                  <p className="text-neutral-400 text-sm">
+                  <p className="text-neutral-400 text-xs sm:text-sm">
                     Estoy disponible para conversaciones sobre proyectos, 
                     oportunidades laborales o simplemente para charlar sobre tecnología.
                   </p>
@@ -215,13 +215,13 @@ const Contact = () => {
 
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
-              <div className="bg-neutral-800 border border-neutral-700 rounded-xl p-8 shadow-sm">
-                <h3 className="text-2xl font-semibold text-white mb-6">
+              <div className="bg-neutral-800 border border-neutral-700 rounded-xl p-4 sm:p-6 md:p-8 shadow-sm">
+                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">
                   Envíame un mensaje
                 </h3>
                 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-neutral-300 mb-2">
                         Nombre *
@@ -280,8 +280,8 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      rows={6}
-                      className="w-full px-4 py-3 bg-neutral-900 border border-neutral-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none text-white placeholder-neutral-500"
+                      rows={5}
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-neutral-900 border border-neutral-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none text-white placeholder-neutral-500 text-sm sm:text-base"
                       placeholder="Cuéntame sobre tu proyecto o pregunta..."
                     />
                   </div>
@@ -289,7 +289,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 font-medium hover:shadow-lg hover:shadow-primary-600/25"
+                    className="w-full flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 font-medium hover:shadow-lg hover:shadow-primary-600/25 text-sm sm:text-base"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center">
@@ -309,10 +309,10 @@ const Contact = () => {
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg flex items-center text-green-400"
+                      className="p-3 sm:p-4 bg-green-500/10 border border-green-500/30 rounded-lg flex items-start sm:items-center text-green-400"
                     >
-                      <FiCheckCircle className="mr-3 flex-shrink-0" size={20} />
-                      <p className="text-sm font-medium">
+                      <FiCheckCircle className="mr-2 sm:mr-3 flex-shrink-0 mt-0.5 sm:mt-0" size={18} />
+                      <p className="text-xs sm:text-sm font-medium">
                         ¡Mensaje enviado correctamente! Te responderé pronto.
                       </p>
                     </motion.div>
@@ -322,18 +322,18 @@ const Contact = () => {
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg flex items-center text-red-400"
+                      className="p-3 sm:p-4 bg-red-500/10 border border-red-500/30 rounded-lg flex items-start text-red-400"
                     >
-                      <FiAlertCircle className="mr-3 flex-shrink-0" size={20} />
-                      <p className="text-sm font-medium">
+                      <FiAlertCircle className="mr-2 sm:mr-3 flex-shrink-0 mt-0.5" size={18} />
+                      <p className="text-xs sm:text-sm font-medium">
                         Hubo un error al enviar el mensaje. Por favor, intenta nuevamente o contáctame directamente por email.
                       </p>
                     </motion.div>
                   )}
                 </form>
 
-                <div className="mt-6 p-4 bg-neutral-900 border border-neutral-700 rounded-lg">
-                  <p className="text-sm text-neutral-400">
+                <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-neutral-900 border border-neutral-700 rounded-lg">
+                  <p className="text-xs sm:text-sm text-neutral-400">
                     <strong className="text-neutral-300">Tiempo de respuesta:</strong> Generalmente respondo en 24-48 horas. 
                     Para consultas urgentes, puedes contactarme directamente por teléfono.
                   </p>
