@@ -250,7 +250,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 bg-neutral-900 border border-neutral-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors text-white placeholder-neutral-500"
-                        placeholder="alejandrofranciscomunoz@gmail.com"
+                        placeholder="Tu-email@ejemplo.com"
                       />
                     </div>
                   </div>

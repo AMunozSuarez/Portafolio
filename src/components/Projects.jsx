@@ -159,10 +159,15 @@ const Projects = () => {
                   
                   <div className="flex space-x-3">
                     {project.id == 1 && (
-                      <button className="flex items-center text-neutral-400 hover:text-neutral-300 font-medium text-sm transition-colors">
+                      <a
+                        href="https://github.com/AMunozSuarez/Gestion-Restaurante"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-neutral-400 hover:text-neutral-300 font-medium text-sm transition-colors"
+                      >
                         <FiGithub className="mr-1" size={16} />
                         Repositorio
-                      </button>
+                      </a>
                     )}
                   </div>
                 </div>

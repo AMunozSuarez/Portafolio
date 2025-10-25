@@ -156,7 +156,7 @@ const Skills = () => {
                     <motion.div
                       key={skill.name}
                       variants={skillVariants}
-                      className="group flex flex-col items-center p-4 bg-neutral-800 border border-neutral-700 rounded-lg hover:border-primary-500/50 hover:bg-neutral-700/50 transition-all duration-300 cursor-pointer"
+                      className="group flex flex-col items-center p-4 bg-neutral-800 border border-neutral-700 rounded-lg hover:border-primary-500/50 hover:bg-neutral-700/50 transition-all duration-300"
                       whileHover={{ y: -5 }}
                     >
                       <span className="text-2xl text-neutral-400 group-hover:text-primary-500 transition-colors duration-300 mb-2">

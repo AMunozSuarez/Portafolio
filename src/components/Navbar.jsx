@@ -54,7 +54,7 @@ const Navbar = () => {
                 key={item.name}
                 to={item.to}
                 smooth={true}
-                duration={500}
+                duration={0}
                 offset={-64}
                 className="text-neutral-300 hover:text-primary-500 cursor-pointer transition-colors font-medium"
                 activeClass="text-primary-500"

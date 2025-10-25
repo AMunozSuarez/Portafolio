@@ -38,7 +38,12 @@ const Hero = () => {
               Alejandro Muñoz
             </h1>
             <h2 className="text-4xl md:text-6xl font-bold">
-              <span className="text-primary-500 animate-glow">Desarrollador Full Stack</span>
+              <span
+                className="bg-gradient-to-r from-cyan-400 via-sky-400 to-primary-500 bg-clip-text text-transparent"
+                style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+              >
+                Desarrollador Full Stack
+              </span>
             </h2>
           </motion.div>
 

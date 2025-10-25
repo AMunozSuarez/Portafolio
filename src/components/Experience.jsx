@@ -24,7 +24,7 @@ const Experience = () => {
 
   const education = {
     degree: "Ingeniería en Computación e Informática",
-    institution: "Universidad [Nombre de la Universidad]",
+    institution: "Universidad Andrés Bello",
     period: "2022 - 2025",
     location: "Chile"
   };
@@ -76,24 +76,22 @@ const Experience = () => {
           </div>
 
           {/* Timeline */}
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <div className="relative">
               {/* Timeline line */}
-              <div className="absolute left-8 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-primary-500/30"></div>
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary-500/30"></div>
 
               {experiences.map((exp, index) => (
                 <motion.div
                   key={exp.id}
                   variants={itemVariants}
-                  className={`relative flex items-center mb-12 ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
+                  className="relative flex items-start mb-12"
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-500 rounded-full border-4 border-neutral-900 shadow-lg z-10"></div>
+                  <div className="absolute left-8 transform -translate-x-1/2 w-4 h-4 bg-primary-500 rounded-full border-4 border-neutral-900 shadow-lg z-10"></div>
 
                   {/* Content card */}
-                  <div className={`ml-16 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
+                  <div className="ml-16 flex-1">
                     <div className="bg-neutral-800 border border-neutral-700 p-6 rounded-xl shadow-sm hover:shadow-xl hover:shadow-primary-500/10 transition-all duration-300 hover:border-neutral-600">
                       <div className="flex items-start justify-between mb-4">
                         <div>
